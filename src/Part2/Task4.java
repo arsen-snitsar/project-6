@@ -1,10 +1,10 @@
 package Part2;
 import java.util.Scanner;
 
-// Create method for array input by user. The method gets length of array as an argument,
-// creates an array and manages user input for every element. Return value of the method is new array.
+// Ask user to create an array (use method 2.1). Calculate and print sum of the array using loop.
+// Apply user friendly interaction.
 
-public class Task1 {
+public class Task4 {
 
     public static Scanner keyboard = new Scanner(System.in);
 
@@ -17,12 +17,16 @@ public class Task1 {
         return userArray;
     }
 
-    public static void main(String[] args) {
-        System.out.print("Enter array length: ");
-        int [] userArray = inputArray(keyboard.nextInt());
+    public static int sum (int [] userArray){
+        int total = 0;
+        for (int value: userArray)
+            total += value;
+        return total;
+    }
 
-        for (int element:userArray) {
-            System.out.print(element + ", ");
-        }
+    public static void main(String[] args) {
+        System.out.print("Please, enter the number of elements in the array: ");
+        int [] userArray = inputArray(keyboard.nextInt());
+        System.out.println(sum(userArray));
     }
 }

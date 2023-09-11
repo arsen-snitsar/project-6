@@ -1,5 +1,8 @@
 package Part2;
 
+// Create a method for array printing. The method gets array as an argument.
+// The method prints the array in user friendly way.
+
 public class Task3 {
 
     public static void printArray(int [] arrayToPrint){
