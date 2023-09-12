@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 // Create method for an array creation with random values. The method gets length of array as an argument,
-// reates an array, fill element values by random values. Return value of the method is new array.
+// creates an array, fill element values by random values. Return value of the method is new array.
 
 public class Task2 {
 
@@ -12,9 +12,11 @@ public class Task2 {
 
     public static int [] createRandomArray(int length){
         int [] randomArray = new int[length];
-        for (int i = 0; i < length; i++) {
+        randomArray[0] = random.nextInt(10) + 1;
+        System.out.print(randomArray[0]);
+        for (int i = 1; i < length; i++) {
             randomArray[i] = random.nextInt(10) + 1;
-            System.out.print(randomArray[i] + ", ");
+            System.out.print(", " + randomArray[i]);
         }
         return randomArray;
     }
