@@ -20,7 +20,7 @@ public class ContactsDatabase {
     }
 
     public static String [] addContact(String [] arrayToAddContactsTo, int contactCount){
-        int i = contactCount + 1;
+        int i = contactCount;
         String userString = "not x";
         while (!userString.equals("x")){
             System.out.printf("Enter №%d contact (or type \"x\", if you wish to stop adding contacts): ", (i+1));
@@ -78,23 +78,53 @@ public class ContactsDatabase {
         System.out.println("Hello! This is a contacts app. Please, select a function (by entering a number):\n" +
                 "1 - print contacts\n" +
                 "2 - add sample contacts\n" +
-                "3 - add a contact" +
-                "4 - edit contact" +
-                "5 - search contact" +
-                "6 - delete selected contact" +
-                "7 - delete all contacts" +
-                "8 - exit");
+                "3 - add a contact\n" +
+                "4 - edit contact\n" +
+                "5 - search contact\n" +
+                "6 - delete selected contact\n" +
+                "7 - delete all contacts\n" +
+                "8 - exit\n");
         int selectedFunction = keyboard.nextInt();
         keyboard.nextLine();
         return selectedFunction;
     }
 
     public static void main(String[] args) {
-        int arraySize = 100000, contactCount = 0;
+        int arraySize = 100000, contactCount = 0, selectedFunction;
         String [] contactsArray = new String[arraySize];
         boolean shouldExit = false;
 
         contactsArray = deleteAllContacts(contactsArray);
+
+        while (!shouldExit){
+            selectedFunction = selectAFunction();
+            switch (selectedFunction){
+                case 1:
+                    printContacts(contactsArray, countContacts(contactsArray));
+                    break;
+                case 2:
+                    contactsArray = addSamples(contactsArray);
+                    break;
+                case 3:
+                    contactsArray = addContact(contactsArray, countContacts(contactsArray));
+                    break;
+                case 4:
+                    contactsArray = editContact(contactsArray);
+                    break;
+                case 5:
+                    searchContact(contactsArray);
+                    break;
+                case 6:
+                    contactsArray = deleteSelected(contactsArray);
+                    break;
+                case 7:
+                    contactsArray = deleteAllContacts(contactsArray);
+                    break;
+                case 8:
+                    shouldExit = true;
+                    break;
+            }
+        }
 
 
 
